@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SKY职忆｜AI求职记忆库与岗位适配平台</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <a class="logo logo-with-img" data-page="home"><img src="assets/logo_sky_zhiyi.png" alt="SKY职忆 logo"><span>SKY职忆</span></a>
+      <nav class="nav" id="mainNav">
+        <button class="nav-link active" data-page="home">首页</button>
+        <button class="nav-link" data-page="flow">开始使用</button>
+        <button class="nav-link" data-page="memory">记忆库</button>
+        <button class="nav-link" data-page="jobs">岗位适配</button>
+        <button class="nav-link" data-page="interview">面试训练</button>
+        <button class="nav-link" data-page="about">参赛说明</button>
+      </nav>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section class="page active-page" id="page-home">
+      <div class="hero">
+        <div class="container hero-grid">
+          <div class="hero-text fade-in">
+            <span class="badge">AI求职记忆库 · 智能岗位适配</span>
+            <h1>一次导入，<br>多岗位适配</h1>
+            <p>
+              SKY职忆是一款面向大学生求职场景的AI求职记忆库与岗位适配平台。
+              它不是一次性面试聊天机器人，而是帮助学生把零散经历沉淀为可复用的求职资产。
+            </p>
+            <div class="hero-buttons">
+              <button class="btn btn-primary" data-page="flow">开始逐步使用</button>
+              <button class="btn btn-secondary" data-page="about">查看参赛包装</button>
+            </div>
+            <div class="hero-tags">
+              <span>免费注册</span><span>简历导入</span><span>求职记忆库</span><span>岗位适配</span><span>面试训练</span>
+            </div>
+          </div>
+          <div class="hero-panel fade-in">
+            <div class="product-card logo-showcase-card">
+              <img src="assets/logo_sky_zhiyi.png" alt="SKY职忆 logo" class="home-logo-img">
+              <h3>个人求职资产中台</h3>
+              <p>导入材料后，系统按流程完成解析、精炼、匹配和训练。</p>
+              <div class="mini-flow">
+                <span>导入</span><b>→</b><span>精炼</span><b>→</b><span>匹配</span><b>→</b><span>训练</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container section">
+        <h2 class="section-title">为什么这样改更适合比赛</h2>
+        <div class="feature-grid">
+          <div class="feature-card fade-in">
+            <div class="feature-icon">01</div>
+            <h3>用户不用从大一开始用</h3>
+            <p>求职前上传简历或粘贴经历即可开始，降低使用门槛。</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon">02</div>
+            <h3>不是重复的面试机器人</h3>
+            <p>核心是求职记忆库，同一段经历能面向不同岗位重组表达。</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon">03</div>
+            <h3>流程清晰，容易录视频</h3>
+            <p>按注册、导入、解析、精炼、匹配、训练分步使用。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLOW -->
+    <section class="page" id="page-flow">
+      <div class="container app-shell">
+        <div class="flow-top">
+          <div>
+            <span class="badge">求职工作台</span>
+            <h1>构建你的求职记忆库</h1>
+            <p>按步骤完成材料导入、经历精炼与岗位推荐。</p>
+          </div>
+          <button class="btn btn-secondary" id="resetFlowBtn">重新开始</button>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="step-dot active" data-step="0"><b>1</b><span>注册</span></div>
+          <div class="progress-line"></div>
+          <div class="step-dot" data-step="1"><b>2</b><span>导入</span></div>
+          <div class="progress-line"></div>
+          <div class="step-dot" data-step="2"><b>3</b><span>解析</span></div>
+          <div class="progress-line"></div>
+          <div class="step-dot" data-step="3"><b>4</b><span>精炼</span></div>
+          <div class="progress-line"></div>
+          <div class="step-dot" data-step="4"><b>5</b><span>完成</span></div>
+        </div>
+
+        <div class="wizard-card">
+          <!-- step 0 -->
+          <div class="flow-step active-step" data-step-panel="0">
+            <div class="step-header">
+              <h2>第一步：免费注册入口</h2>
+              <p>展示“所有学生免费使用 + 验证码防刷号 + 邮箱/用户名唯一性”的产品意识。</p>
+            </div>
+            <div class="form-grid">
+              <label>用户名<input id="username" placeholder="例如 zhanglu" /></label>
+              <label>昵称<input id="nickname" placeholder="例如 SKY" /></label>
+              <label>邮箱，可选<input id="email" placeholder="sukoya@example.com" /></label>
+              <label>密码<input id="password" placeholder="请输入密码" type="password" /></label>
+            </div>
+            <div class="captcha-panel">
+              <span id="captchaText">人机验证</span>
+              <input id="captchaInput" placeholder="输入计算结果" />
+              <button class="btn btn-secondary small-btn" id="refreshCaptcha">换一道</button>
+            </div>
+            <div class="tip-box" id="authMessage">注册信息只保存在浏览器本地，用于使用。</div>
+            <div class="step-actions">
+              <button class="btn btn-primary" id="registerBtn">完成注册，下一步</button>
+            </div>
+          </div>
+
+          <!-- step 1 -->
+          <div class="flow-step" data-step-panel="1">
+            <div class="step-header">
+              <h2>第二步：选择材料入口</h2>
+              <p>用户可以有简历，也可以没有简历；系统通过两种入口降低使用门槛。</p>
+            </div>
+            <div class="choice-row">
+              <button class="choice-card active" data-mode="hasResume">
+                <b>我已有简历</b>
+                <span>适合大三、大四或正在投递的学生</span>
+              </button>
+              <button class="choice-card" data-mode="noResume">
+                <b>我还没有简历</b>
+                <span>适合大一、大二或经历尚未整理的学生</span>
+              </button>
+            </div>
+            <div class="upload-card">
+              <div>
+                <h3>上传简历文件</h3>
+                <p>纯系统可直接读取 .txt / .md；PDF/DOCX 将显示文件名，正式接入后由后端解析。</p>
+              </div>
+              <label class="file-upload">
+                <input type="file" id="resumeFile" accept=".txt,.md,.pdf,.docx" />
+                <span>选择文件</span>
+              </label>
+              <div id="fileStatus" class="file-status">尚未选择文件</div>
+            </div>
+            <textarea id="resumeInput" rows="10" placeholder="粘贴简历或经历材料，例如：我做过SKY蓝天项目，负责官网、系统原型、长期记忆模块设计..."></textarea>
+            <div class="step-actions">
+              <button class="btn btn-secondary" data-prev>上一步</button>
+              <button class="btn btn-secondary" id="sampleBtn">填入示例材料</button>
+              <button class="btn btn-primary" id="toParseBtn">下一步：材料解析</button>
+            </div>
+          </div>
+
+          <!-- step 2 -->
+          <div class="flow-step" data-step-panel="2">
+            <div class="step-header">
+              <h2>第三步：材料解析智能体</h2>
+              <p>从原始材料中识别教育背景、技能标签、项目/实习/竞赛经历和缺失字段。</p>
+            </div>
+            <div class="two-col">
+              <div class="panel">
+                <h3>导入材料预览</h3>
+                <div id="materialPreview" class="preview-box">等待材料...</div>
+              </div>
+              <div class="panel">
+                <h3>智能解析过程</h3>
+                <div id="parseLoading" class="loading-area hidden">
+                  <div class="loader"></div>
+                  <p>材料解析智能体正在读取经历、提取技能和识别岗位方向...</p>
+                </div>
+                <div id="parseVisual" class="parse-visual">
+                  <div class="empty-state">点击下方按钮后，这里会逐步弹出关键词、经历卡片和缺失项。</div>
+                </div>
+                <details class="debug-details">
+                  <summary>查看结构化JSON（调试用）</summary>
+                  <pre id="parseResult" class="json-box compact-json">尚未生成。</pre>
+                </details>
+              </div>
+            </div>
+            <div class="step-actions">
+              <button class="btn btn-secondary" data-prev>上一步</button>
+              <button class="btn btn-primary" id="parseBtn">运行解析</button>
+              <button class="btn btn-primary" id="toRefineBtn">下一步：经历精炼</button>
+            </div>
+          </div>
+
+          <!-- step 3 -->
+          <div class="flow-step" data-step-panel="3">
+            <div class="step-header">
+              <h2>第四步：经历精炼并写入记忆</h2>
+              <p>将零散信息归并为“长期求职记忆”，后续岗位适配和面试训练都从这里调用。</p>
+            </div>
+            <div class="two-col">
+              <div class="panel">
+                <h3>精炼结果预览</h3>
+                <div id="refineLoading" class="loading-area hidden">
+                  <div class="loader"></div>
+                  <p>经历精炼智能体正在合并相似经历、生成能力标签...</p>
+                </div>
+                <div id="refineVisual" class="parse-visual">
+                  <div class="empty-state">点击“精炼并写入”后，将生成求职记忆卡片。</div>
+                </div>
+                <details class="debug-details">
+                  <summary>查看结构化JSON（调试用）</summary>
+                  <pre id="refineResult" class="json-box compact-json">等待精炼...</pre>
+                </details>
+              </div>
+              <div class="panel">
+                <h3>写入策略</h3>
+                <div class="strategy-list">
+                  <div><b>长期记忆</b><span>高价值项目、实习、竞赛、技能</span></div>
+                  <div><b>过渡记忆</b><span>面试反馈、待补充经历、近期投递方向</span></div>
+                  <div><b>工作记忆</b><span>临时输入与普通对话，不长期保存</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <button class="btn btn-secondary" data-prev>上一步</button>
+              <button class="btn btn-primary" id="refineBtn">精炼并写入</button>
+              <button class="btn btn-primary" id="finishFlowBtn">完成使用</button>
+            </div>
+          </div>
+
+          <!-- step 4 -->
+          <div class="flow-step" data-step-panel="4">
+            <div class="step-header">
+              <h2>第五步：完成求职记忆库构建</h2>
+              <p>现在可以进入岗位适配和面试训练页面，展示“一次导入，多岗位复用”。</p>
+            </div>
+            <div class="complete-grid">
+              <div class="complete-card">
+                <h3>查看求职记忆库</h3>
+                <p>确认精炼后的经历、能力标签和岗位相关性。</p>
+                <button class="btn btn-secondary" data-page="memory">进入记忆库</button>
+              </div>
+              <div class="complete-card">
+                <h3>生成岗位匹配</h3>
+                <p>从岗位库中筛选更适合投递的岗位。</p>
+                <button class="btn btn-secondary" data-page="jobs">进入岗位适配</button>
+              </div>
+              <div class="complete-card">
+                <h3>开始面试训练</h3>
+                <p>基于记忆库生成自我介绍和追问题。</p>
+                <button class="btn btn-secondary" data-page="interview">进入面试训练</button>
+              </div>
+            </div>
+            <div class="step-actions">
+              <button class="btn btn-secondary" data-prev>上一步</button>
+              <button class="btn btn-primary" data-page="jobs">继续岗位适配</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMORY -->
+    <section class="page" id="page-memory">
+      <div class="container section">
+        <div class="page-title-row">
+          <div>
+            <span class="badge">长期复用</span>
+            <h1>求职记忆库</h1>
+            <p>保存可被岗位适配、简历表达和面试训练反复调用的结构化经历资产。</p>
+          </div>
+          <div class="button-row">
+            <button class="btn btn-secondary" id="clearMemoryBtn">清空使用记忆</button>
+            <button class="btn btn-primary" id="exportMemoryBtn">导出JSON</button>
+          </div>
+        </div>
+        <div class="memory-grid" id="memoryList">
+          <div class="empty-card">暂无记忆，请先完成材料导入。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOBS -->
+    <section class="page" id="page-jobs">
+      <div class="container section">
+        <div class="page-title-row">
+          <div>
+            <span class="badge">岗位匹配</span>
+            <h1>岗位适配</h1>
+            <p>结合本地校招岗位库和个人求职记忆库，按需检索并生成匹配度与推荐理由。</p>
+          </div>
+        </div>
+
+        <div class="filter-card">
+          <label>目标岗位关键词<input id="jobKeyword" placeholder="例如 AI产品助理 / 数据分析 / 材料研发" value="AI产品助理" /></label>
+          <label>城市偏好<input id="cityKeyword" placeholder="可留空，例如 上海、杭州、长春" /></label>
+          <button class="btn btn-primary" id="matchJobsBtn">生成岗位匹配</button>
+        </div>
+        <div class="job-action-row">
+          <div id="jobResultInfo">岗位库采用后端本地分页检索，不再一次性载入全部数据。</div>
+          <div>
+            <button class="btn btn-secondary small-btn" id="prevJobPage">上一页</button>
+            <button class="btn btn-secondary small-btn" id="nextJobPage">下一页</button>
+          </div>
+        </div>
+
+        <div class="job-grid" id="jobCardList">
+          <div class="empty-card">输入岗位关键词后，系统会推荐匹配度较高的岗位。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERVIEW -->
+    <section class="page" id="page-interview">
+      <div class="container section">
+        <div class="page-title-row">
+          <div>
+            <span class="badge">个性化训练</span>
+            <h1>面试训练</h1>
+            <p>基于个人记忆库、通用校招题库和目标岗位生成训练方案。</p>
+          </div>
+        </div>
+
+        <div class="interview-layout">
+          <div class="panel-card">
+            <h2>生成训练方案</h2>
+            <label>目标岗位<input id="interviewJob" value="AI产品助理" /></label>
+            <button class="btn btn-primary wide-btn" id="generateInterviewBtn">生成自我介绍与面试题</button>
+            <h3>1分钟自我介绍</h3>
+            <div id="selfIntroBox" class="answer-box">等待生成...</div>
+          </div>
+          <div class="panel-card">
+            <h2>个性化追问题与回答练习</h2>
+            <p class="muted-line">生成问题后，用户可以直接输入回答，系统会给出结构化反馈。</p>
+            <div id="questionList" class="question-list">等待生成...</div>
+          </div>
+        </div>
+
+        <div class="panel-card feedback-card">
+          <h2>面试反馈回写</h2>
+          <textarea id="feedbackInput" rows="5" placeholder="面试后记录：哪里卡壳了？HR追问了什么？下次要怎么改？"></textarea>
+          <button class="btn btn-primary" id="saveFeedbackBtn">保存为面试反馈记忆</button>
+        </div>
+      </div>
+    </section>
+<!-- ABOUT -->
+    <section class="page" id="page-about">
+      <div class="container section">
+        <h1 class="center-title">参赛说明</h1>
+        <p class="section-desc">把项目从“AI陪伴”改成“AI+求职”后，核心叙事更贴比赛，也更容易落地。</p>
+        <div class="about-grid">
+          <div class="panel-card">
+            <h2>项目定位</h2>
+            <p>面向大学生求职场景的AI求职记忆库与岗位适配平台，解决经历分散、岗位适配重复、面试准备低效的问题。</p>
+          </div>
+          <div class="panel-card">
+            <h2>创新表达</h2>
+            <p>不是首创AI简历工具，而是从一次性生成工具升级为“求职记忆库”：一次导入、多岗位重组、多轮求职复用。</p>
+          </div>
+          <div class="panel-card">
+            <h2>落地方式</h2>
+            <p>项目已完成网页端产品界面、本地后端服务、DeepSeek chat 模型调用、本地校招岗位库检索、简历文件上传解析、求职记忆生成、岗位适配和面试训练闭环。用户可以导入简历或经历材料，系统完成解析、精炼、匹配、训练与反馈回写，形成可运行的求职辅助流程。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-box">
+      <div>
+        <h3>SKY职忆</h3>
+        <p>一次导入，多岗位适配。</p>
+      </div>
+      <div>
+        <h4>使用路径</h4>
+        <p>注册 → 导入 → 解析 → 精炼 → 匹配 → 训练</p>
+      </div>
+      <div>
+        <h4>技术关键词</h4>
+        <p>长期记忆 / 岗位适配 / 面试训练 / 求职资产管理</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
