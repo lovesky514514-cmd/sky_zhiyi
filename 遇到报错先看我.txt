@@ -1,0 +1,24 @@
+如果双击 backend/run_backend.bat 报错，请按下面步骤操作：
+
+1. 打开 backend/.env
+把第一行改成：
+DEEPSEEK_API_KEY=你的真实DeepSeek API Key
+
+2. 在 backend 文件夹空白处按住 Shift + 鼠标右键
+选择“在终端中打开”或“在此处打开命令窗口”。
+
+3. 依次运行：
+py -m pip install -r requirements.txt
+py server.py
+
+4. 如果提示 py 不存在，改用：
+python -m pip install -r requirements.txt
+python server.py
+
+5. 看到 Running on http://127.0.0.1:5000 后，不要关闭这个窗口。
+然后再双击根目录 index.html 打开网页。
+
+常见错误：
+- No module named requests：说明依赖没装，运行 py -m pip install -r requirements.txt
+- DEEPSEEK_API_KEY is not recognized：不要双击 .env 文件；.env 只是配置文件，不是程序
+- '.' is not recognized：批处理编码问题，使用本修复版 run_backend.bat
