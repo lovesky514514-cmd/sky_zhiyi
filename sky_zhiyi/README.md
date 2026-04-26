@@ -244,8 +244,8 @@ SKY_ZhiYi_Web/
 ### 1. 克隆项目
 
 ```bash
-git clone https://github.com/你的用户名/你的仓库名.git
-cd 你的仓库名
+git clone https://github.com/lovesky514514-cmd/sky_zhiyi.git
+cd sky_zhiyi
 ```
 
 ---
