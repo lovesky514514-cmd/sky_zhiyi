@@ -231,6 +231,15 @@ $("toParseBtn").onclick = () => {
 function unique(arr) {
   return [...new Set((arr || []).filter(Boolean))];
 }
+
+function cleanAIText(text) {
+  if (text === null || text === undefined) return "";
+  return String(text)
+    .replace(/\\n/g, "\n")
+    .replace(/\\t/g, " ")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
 function parseMaterial(text) {
   const skills = ["Python","Streamlit","Flask","HTML","CSS","JavaScript","DeepSeek","RAG","Agent","PPT","项目书","科研写作","数据分析","COMSOL","Origin","GitHub","用户调研","市场调研","财务分析","风险评估"];
   const found = skills.filter(k => text.toLowerCase().includes(k.toLowerCase()));
@@ -610,17 +619,22 @@ function renderQuestionPractice(questions, target) {
     list.innerHTML = "暂无问题。";
     return;
   }
-  list.innerHTML = questions.map((q, i) => `<div class="question-item" data-qidx="${i}">
-    <b>${i+1}. ${q.question}</b>
-    <p>考查点：${q.why || q.intent || ""}</p>
-    <p>回答建议：${q.answer_hint || q.hint || ""}</p>
-    <textarea class="answer-input" id="answer_${i}" placeholder="在这里输入你的回答，系统会给出改进建议..."></textarea>
-    <div class="answer-actions">
-      <button class="btn btn-secondary small-btn" onclick="evaluateAnswer(${i})">评价我的回答</button>
-      <button class="btn btn-secondary small-btn" onclick="saveAnswerAsMemory(${i})">保存为面试记忆</button>
-    </div>
-    <div class="answer-feedback hidden" id="feedback_${i}"></div>
-  </div>`).join("");
+  list.innerHTML = questions.map((q, i) => {
+    const question = cleanAIText(q.question || "面试问题");
+    const why = cleanAIText(q.why || q.intent || "");
+    const hint = cleanAIText(q.answer_hint || q.hint || "");
+    return `<div class="question-item" data-qidx="${i}">
+      <b>${i+1}. ${question}</b>
+      ${why ? `<p>考查点：${why}</p>` : ""}
+      ${hint ? `<p>回答建议：${hint}</p>` : ""}
+      <textarea class="answer-input" id="answer_${i}" placeholder="在这里输入你的回答，系统会给出改进建议..."></textarea>
+      <div class="answer-actions">
+        <button class="btn btn-secondary small-btn" onclick="evaluateAnswer(${i})">评价我的回答</button>
+        <button class="btn btn-secondary small-btn" onclick="saveAnswerAsMemory(${i})">保存为面试记忆</button>
+      </div>
+      <div class="answer-feedback hidden" id="feedback_${i}"></div>
+    </div>`;
+  }).join("");
   state.currentQuestions = questions;
   state.currentInterviewTarget = target;
 }
@@ -636,15 +650,17 @@ window.evaluateAnswer = async function(i) {
   fb.textContent = "正在分析你的回答...";
   fb.classList.remove("hidden");
   try {
-    const result = await evaluateAnswerWithDeepSeek(q.question || "", ans, state.currentInterviewTarget || "目标岗位");
+    const result = await evaluateAnswerWithDeepSeek(cleanAIText(q.question || ""), ans, state.currentInterviewTarget || "目标岗位");
     if (result) {
-      const strengths = (result.strengths || []).map(x => `- ${x}`).join("\\n");
-      const suggestions = (result.suggestions || []).map(x => `- ${x}`).join("\\n");
-      fb.textContent = `总体评价：${result.overall || ""}\\n\\n优点：\\n${strengths}\\n\\n改进建议：\\n${suggestions}\\n\\n优化示范：\\n${result.polished_answer || ""}`;
+      const strengths = (result.strengths || []).map(x => `- ${cleanAIText(x)}`).join("\n");
+      const suggestions = (result.suggestions || []).map(x => `- ${cleanAIText(x)}`).join("\n");
+      const overall = cleanAIText(result.overall || "");
+      const polished = cleanAIText(result.polished_answer || "");
+      fb.textContent = `总体评价：${overall}\n\n优点：\n${strengths || "- 暂无"}\n\n改进建议：\n${suggestions || "- 暂无"}\n\n优化示范：\n${polished || ans}`;
       return;
     }
   } catch (e) {}
-  fb.textContent = localEvaluateAnswer(q.question || "", ans, state.currentInterviewTarget || "目标岗位");
+  fb.textContent = cleanAIText(localEvaluateAnswer(cleanAIText(q.question || ""), ans, state.currentInterviewTarget || "目标岗位"));
 };
 window.saveAnswerAsMemory = function(i) {
   const q = state.currentQuestions?.[i] || {};
@@ -656,7 +672,7 @@ window.saveAnswerAsMemory = function(i) {
   state.memories.push({
     memory_type:"interview_answer",
     title:"面试回答练习",
-    refined_summary:`问题：${q.question}\n回答：${ans}`,
+    refined_summary:`问题：${cleanAIText(q.question)}\n回答：${ans}`,
     ability_tags:["面试回答","表达训练","复盘"],
     job_relevance:[state.currentInterviewTarget || "目标岗位"],
     importance_score:72,
@@ -676,7 +692,7 @@ $("generateInterviewBtn").onclick = async () => {
   try {
     const plan = await interviewWithDeepSeek(target, state.memories);
     if (plan) {
-      $("selfIntroBox").textContent = plan.self_intro || "已生成。";
+      $("selfIntroBox").textContent = cleanAIText(plan.self_intro || "已生成。");
       renderQuestionPractice(plan.questions || [], target);
       return;
     }
